@@ -25,3 +25,28 @@ header {
     font-size: 4rem;
     color: white;
 }
+
+button {
+  font-size: 1em;
+  padding: 0.5em;
+  background-color: #ddd;
+  color: #555;
+  border-radius: 0.5rem;
+  border: none;
+}
+
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 5rem;
+  padding-left: 100px;
+  padding-right: 100px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
