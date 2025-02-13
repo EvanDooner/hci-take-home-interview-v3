@@ -12,7 +12,7 @@ function App() {
   const page =  selectPage(currentPage);
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+    <div id="app">
       {page}
     </div>
   )
