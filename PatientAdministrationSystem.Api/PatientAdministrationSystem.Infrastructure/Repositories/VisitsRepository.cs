@@ -37,6 +37,7 @@ public class VisitsRepository : IVisitsRepository
             ))
         )
         .Include(v => v.PatientHospitals)
+        .ThenInclude(ph => ph.Patient)
         .OrderByDescending(v => v.Date)
         .ThenBy(v => v.Id);
 
