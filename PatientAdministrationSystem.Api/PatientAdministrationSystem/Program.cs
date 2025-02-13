@@ -25,6 +25,8 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddScoped<IPatientsRepository, PatientsRepository>();
 builder.Services.AddScoped<IPatientsService, PatientsService>();
+builder.Services.AddScoped<IVisitsRepository, VisitsRepository>();
+builder.Services.AddScoped<IVisitsService, VisitsService>();
 
 builder.Services.AddDbContext<HciDataContext>(options =>
     options.UseInMemoryDatabase("InMemoryDatabase"));
