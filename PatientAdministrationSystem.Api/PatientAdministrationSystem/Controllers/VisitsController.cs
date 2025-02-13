@@ -20,7 +20,12 @@ public class VisitsController : ControllerBase
 
     // Define your API contracts here
     [HttpGet]
-    public ActionResult<PaginatedResults<RichVisit>> FindVisits([FromQuery] string searchQuery = "", [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
+    public ActionResult<PaginatedResults<RichVisit>> FindVisits(
+        [FromQuery] DateTime startDateInc,
+        [FromQuery] DateTime endDateInc,
+        [FromQuery] string searchQuery = "",
+        [FromQuery] int pageNumber = 1,
+        [FromQuery] int pageSize = 10)
     {
         if (pageNumber < 1)
         {
@@ -30,8 +35,12 @@ public class VisitsController : ControllerBase
         {
             return BadRequest($"pageSize should be greater than or equal to 1. Was: {pageSize}");
         }
+        if (startDateInc.CompareTo(endDateInc) >= 0)
+        {
+            return BadRequest($"endDateInc should be greater than startDateInc. startDateInc: {startDateInc}, endDateInc: {endDateInc}");
+        }
         
-        var results = _visitsService.FindVisits(new Guid("ff0c022e-1aff-4ad8-2231-08db0378ac98"), searchQuery, DateTime.UtcNow.AddYears(-1), DateTime.UtcNow, pageNumber, pageSize);
+        var results = _visitsService.FindVisits(new Guid("ff0c022e-1aff-4ad8-2231-08db0378ac98"), searchQuery, startDateInc, endDateInc, pageNumber, pageSize);
 
         return new PaginatedResults<RichVisit>(results.Results.Select(ToRichVisit), results.PageNumber, results.PageSize, results.TotalCount);
     }

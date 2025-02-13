@@ -30,6 +30,8 @@ public class VisitsRepository : IVisitsRepository
         }
 
         var allResults = _context.Visits.Where(v =>
+            v.Date.CompareTo(startDateInc) >= 0 &&
+            v.Date.CompareTo(endDateInc) <= 0 &&
             v.PatientHospitals.Any(ph => ph.HospitalId == hospitalId &&
             (
                 (ph.Patient.FirstName + ph.Patient.LastName).Replace(" ", "").Contains(searchQuery, StringComparison.CurrentCultureIgnoreCase) ||
