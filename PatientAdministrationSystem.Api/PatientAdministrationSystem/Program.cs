@@ -110,6 +110,9 @@ using (var serviceScope = app.Services.CreateScope())
     dbContext.SaveChanges();
 }
 
+app.UseDefaultFiles();
+
+app.UseStaticFiles();
 
 app.UseSwagger();
 app.UseSwaggerUI();
