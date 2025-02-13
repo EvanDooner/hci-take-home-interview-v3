@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import './App.css'
 import PatientSearch from './views/PatientSearch';
-import {findPatients, getPatient} from './services/patientSearchService';
+import PatientSearchService from './services/patientSearchService';
+import apiClient from './api/apiClient';
 import Patient from './models/patient';
 import PaginatedResults from './models/paginatedResults';
 import PatientView from './views/PatientView';
@@ -12,6 +13,8 @@ enum Page {
   PatientView
 }
 
+const patientSearchService = new PatientSearchService(apiClient);
+
 function App() {
   const [currentPage, setCurrentPage] = useState(Page.PatientSearch);
   const [currentPatient, setCurrentPatient] = useState<PatientWithVisits | undefined>(undefined);
@@ -20,7 +23,7 @@ function App() {
   const page =  selectPage();
 
   function onSelect(patientId: string) {
-    getPatient(patientId, (patient) => {
+    patientSearchService.getPatient(patientId, (patient) => {
       setCurrentPatient(patient);
       setCurrentPage(Page.PatientView);
     });
@@ -29,7 +32,7 @@ function App() {
   function selectPage() {
     switch(currentPage) {
       case Page.PatientSearch:
-        return <PatientSearch patients={patients} onSearch={(searchQuery) => findPatients(searchQuery, setPatients)} onSelect={onSelect}/>
+        return <PatientSearch patients={patients} onSearch={(searchQuery) => patientSearchService.findPatients(searchQuery, setPatients)} onSelect={onSelect}/>
       case Page.PatientView:
         if (currentPatient === undefined) {
           throw new Error("Cannot display patient view - no patient selected");

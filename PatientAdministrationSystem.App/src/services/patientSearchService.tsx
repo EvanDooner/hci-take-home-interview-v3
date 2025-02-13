@@ -1,20 +1,32 @@
 import Patient from "../models/patient";
-import apiClient from "../api/apiClient";
 import PaginatedResults from "../models/paginatedResults";
 import PatientWithVisits from "../models/patientWithVisits";
+import { AxiosInstance } from "axios";
 
-export function findPatients(searchQuery: string, callback: (patients: PaginatedResults<Patient>) => void) {
-    apiClient.get<PaginatedResults<Patient>>(`api/patients?searchQuery=${searchQuery}`)
-        .then(res => {
-            callback(res.data);
-        })
-        .catch((err) => console.log(err));
-}
+export default class PatientSearchService {
+    private readonly _apiClient: AxiosInstance
 
-export function getPatient(patientId: string, callback: (patients: PatientWithVisits) => void) {
-    apiClient.get<PatientWithVisits>(`api/patients/${patientId}`)
-        .then(res => {
-            callback(res.data);
-        })
-        .catch((err) => console.log(err));
+    constructor(apiClient: AxiosInstance) {
+        this._apiClient = apiClient;
+    }
+
+    findPatients(searchQuery: string, callback: (patients: PaginatedResults<Patient>) => void) {
+        this._apiClient.get<PaginatedResults<Patient>>(`api/patients?searchQuery=${searchQuery}`)
+            .then(res => {
+                callback(res.data);
+            })
+            // Show the user something useful here
+            .catch((err) => console.log(err));
+            // .finally(() => end "loading" state)
+    }
+
+    getPatient(patientId: string, callback: (patients: PatientWithVisits) => void) {
+        this._apiClient.get<PatientWithVisits>(`api/patients/${patientId}`)
+            .then(res => {
+                callback(res.data);
+            })
+            // Show the user something useful here
+            .catch((err) => console.log(err));
+            // .finally(() => end "loading" state)
+    }
 }
