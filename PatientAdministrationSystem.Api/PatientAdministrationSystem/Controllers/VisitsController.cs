@@ -40,6 +40,11 @@ public class VisitsController : ControllerBase
     {
         var relationship = visitEntity.PatientHospitals.First();
 
-        return new RichVisit(visitEntity.Id, visitEntity.Date, relationship.PatientId, relationship.HospitalId, relationship.Patient.FirstName, relationship.Patient.LastName);
+        return new RichVisit(visitEntity.Id, visitEntity.Date, relationship.PatientId, relationship.HospitalId, ToPatient(relationship.Patient));
+    }
+
+    private Patient ToPatient(PatientEntity patientEntity)
+    {
+        return new Patient(patientEntity.Id, patientEntity.FirstName, patientEntity.LastName, patientEntity.Email);
     }
 }
