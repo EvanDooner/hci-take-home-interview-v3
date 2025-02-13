@@ -1,4 +1,3 @@
-using System.Data.
 using PatientAdministrationSystem.Application.Entities;
 using PatientAdministrationSystem.Application.Repositories.Interfaces;
 using PatientAdministrationSystem.Application.Repositories.Pagination;
@@ -31,8 +30,8 @@ public class PatientsRepository : IPatientsRepository
         var allResults = _context.Patients.Where(p =>
             p.PatientHospitals.Any(ph => ph.HospitalId == hospitalId) &&
             (
-                (p.FirstName + p.LastName).Replace(" ", "").ToLower().Contains(searchQuery) ||
-                p.Email.Replace(" ", "").ToLower().Contains(searchQuery)
+                (p.FirstName + p.LastName).Replace(" ", "").Contains(searchQuery, StringComparison.CurrentCultureIgnoreCase) ||
+                p.Email.Replace(" ", "").Contains(searchQuery, StringComparison.CurrentCultureIgnoreCase)
             )
         )
         .OrderBy(p => p.FirstName)
@@ -55,7 +54,11 @@ public class PatientsRepository : IPatientsRepository
 
         if (patient != null && loadVisits)
         {
-            _context.Entry(patient).Collection(p => p.PatientHospitals.Select(ph => ph.Visit)).Load();
+            _context.Entry(patient).Collection(p => p.PatientHospitals).Load();
+            foreach (PatientHospitalRelation phr in patient.PatientHospitals)
+            {
+                _context.Entry(phr).Reference(phr => phr.Visit).Load();
+            }
         }
 
         return patient;
