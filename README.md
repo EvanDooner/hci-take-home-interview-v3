@@ -1,7 +1,7 @@
 # Health Care Informed Engineering - Take home assessment
 
 <p align="center">
-  <img src="patient-search-repo-image.png">
+  <img src="patient-search-image.png">
 </p>
 
 We are a very practical team at Health Care Informed and this extends to the way that we work with you to find out if this team is a great fit for you. We want you to come away with a great understanding of the work that we actually do day to day and what it is like to work with us. 
