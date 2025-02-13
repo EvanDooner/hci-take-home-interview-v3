@@ -14,25 +14,36 @@
 .patient-search {
     width: 100%;
 
-    .patient-search-results {
-        ol {
-            list-style: none;
-            padding: 0;
+    .patient-search-form {
+        font-size: 1.8rem;
+        display: flex;
+        gap: 1rem;
+        padding-left: 100px;
+        padding-right: 100px;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        background-color: #eee;
+    
+        input {
+            width: 80%;
+            font-size: 1.2rem;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            border: none;
         }
+    
+        button {
+            width: 20%;
+            background-color: #6870cb;
+            color: white;
+        }
+    }
 
+    .patient-search-results {
         li {
-            display: flex;
-            align-items: center;
             justify-content: space-between;
-            width: 100%;
-            min-height: 5rem;
             cursor: pointer;
-            padding-left: 100px;
-            padding-right: 100px;
-            vertical-align: middle;
             font-size: 1.8rem;
-            border-top: 1px solid #ccc;
-            border-bottom: 1px solid #ccc;
 
             .patient-email {
                 color: #999;
@@ -45,29 +56,25 @@
     }
 }
 
-.patient-search-form {
-    display: flex;
-    gap: 1rem;
-    padding-left: 100px;
-    padding-right: 100px;
+.patient-view {
+    width: 100%;
     padding-top: 2rem;
-    padding-bottom: 2rem;
-    background-color: #eee;
+    font-size: 1.8rem;
 
-    input {
-        width: 80%;
-        font-size: 1.2rem;
-        padding: 1rem;
-        border-radius: 0.25rem;
-        border: none;
-    }
+    .bio {
+        margin: 2rem 0;
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.5rem;
+        max-width: 50%;
 
-    button {
-        width: 20%;
-        font-size: 1.8rem;
-        background-color: #6870cb;
-        color: white;
-        border-radius: 0.5rem;
-        border: none;
+        .bio-item {
+            display: grid;
+            grid-template-columns: 50% 50%;
+        }
+
+        .label {
+            color: #999;
+        }
     }
 }
