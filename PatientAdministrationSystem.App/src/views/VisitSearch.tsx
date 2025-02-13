@@ -1,24 +1,24 @@
 import { useState } from "react";
-import Patient from "../models/patient";
-import PaginatedResults from "../models/paginatedResults";
-import PatientSearchResults from "../components/PatientSearchResults";
-import { Page } from "../Constants";
+import PaginatedResults from "../models/paginatedResults"
+import VisitSearchResults from "../components/VisitSearchResults";
+import RichVisit from "../models/richVisit";
 import SearchTabs from "../components/SearchTabs";
+import { Page } from "../Constants";
 
-type PatientSearchArguments = {
-    patients: PaginatedResults<Patient> | undefined,
+type VisitSearchArguments = {
+    visits: PaginatedResults<RichVisit> | undefined,
     onSearch: (searchQuery: string) => void,
     onSelect: (patientId: string) => void,
     onTabSelect: (page: Page) => void,
 };
 
-export default function PatientSearch({patients, onSearch, onSelect, onTabSelect}: PatientSearchArguments) {
+export default function VisitSearch({visits, onSearch, onSelect, onTabSelect}: VisitSearchArguments) {
     const [searchQuery, setSearchQuery] = useState("")
 
     return (
-        <div className="patient search">
-            <SearchTabs currentPage={Page.PatientSearch} onSelect={onTabSelect} />
-            <div className="patient search-form">
+        <div className="visit search">
+            <SearchTabs currentPage={Page.VisitSearch} onSelect={onTabSelect} />
+            <div className="visit search-form">
                 <input 
                         placeholder="Enter patient name or email" 
                         type="text" 
@@ -33,8 +33,8 @@ export default function PatientSearch({patients, onSearch, onSelect, onTabSelect
                     />
                 <button onClick={() => onSearch(searchQuery)}>Search</button>
             </div>
-            {patients &&
-                <PatientSearchResults patients={patients} onSelect={onSelect} />
+            {visits &&
+                <VisitSearchResults visits={visits} onSelect={onSelect} />
             }
         </div>
     );

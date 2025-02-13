@@ -11,10 +11,29 @@
     margin: 0 auto;
 }
 
-.patient-search {
-    width: 100%;
+.search-tabs {
+    display: flex;
 
-    .patient-search-form {
+    .tab {
+        display: flex;
+        align-items: baseline;
+        background-color: #bbb;
+        padding: 0.5rem 0.75rem 0.25rem;
+        font-size: 2em;
+        border-top-right-radius: 0.5em;
+        border-top-left-radius: 0.5em;
+    } 
+
+    .tab.active {
+        background-color: #eee;
+    }
+}
+
+.search {
+    width: 100%;
+    margin-top: 1rem;
+
+    .search-form {
         font-size: 1.8rem;
         display: flex;
         gap: 1rem;
