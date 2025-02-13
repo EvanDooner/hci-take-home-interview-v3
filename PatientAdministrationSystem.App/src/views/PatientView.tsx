@@ -7,7 +7,6 @@ function formatDate(date: string) {
 }
 
 export default function PatientView({patient, onBack}: {patient: PatientWithVisits, onBack: () => void}) {
-    console.log(patient);
     const visits = patient.visits.map(v => <li key={v.id}>{formatDate(v.date)}</li>)
 
     return (
