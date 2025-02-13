@@ -8,5 +8,5 @@ public class PatientEntity : Entity<Guid>
 
     public string Email { get; set; } = null!;
 
-    public ICollection<PatientHospitalRelation>? PatientHospitals { get; set; }
+    public ICollection<PatientHospitalRelation> PatientHospitals { get; set; } = [];
 }

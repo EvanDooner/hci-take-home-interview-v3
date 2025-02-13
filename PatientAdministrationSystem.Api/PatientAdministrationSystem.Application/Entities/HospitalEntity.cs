@@ -4,5 +4,5 @@ public class HospitalEntity : Entity<Guid>
 {
     public string Name { get; set; } = null!;
 
-    public ICollection<PatientHospitalRelation>? PatientHospitals { get; set; }
+    public ICollection<PatientHospitalRelation> PatientHospitals { get; set; } = [];
 }
