@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+body {
+  background-color: aliceblue;
+  margin: 0;
+}
+
+header {
+    box-sizing: content-box;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    min-height: 6rem;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    background-color: rgb(65, 65, 195);
+    font-size: 4rem;
+    color: white;
+}
