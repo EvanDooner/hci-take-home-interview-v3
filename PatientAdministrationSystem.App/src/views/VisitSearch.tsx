@@ -36,20 +36,23 @@ export default function VisitSearch({visits, onSearch, onSelect, onTabSelect}: V
         <div className="visit search">
             <SearchTabs currentPage={Page.VisitSearch} onSelect={onTabSelect} />
             <div className="visit search-form">
-                <input 
-                        placeholder="Enter patient name or email" 
-                        type="text" 
-                        name="searchQuery" 
-                        value={searchQuery} 
-                        onChange={e => setSearchQuery(e.target.value)} 
-                        onKeyDown={e => {
-                            if (e.key === 'Enter') {
-                                onSearch(searchQuery, currentStartDateInc, endDateInc)
-                            }
-                        }}
-                    />
+                
                 <DateRangeSelector dateRange={dateRange} setDateRange={setDateRange} />
-                <button onClick={() => onSearch(searchQuery, currentStartDateInc, endDateInc)}>Search</button>
+                <div className="visit searchbar">
+                    <input 
+                            placeholder="Enter patient name or email" 
+                            type="text" 
+                            name="searchQuery" 
+                            value={searchQuery} 
+                            onChange={e => setSearchQuery(e.target.value)} 
+                            onKeyDown={e => {
+                                if (e.key === 'Enter') {
+                                    onSearch(searchQuery, currentStartDateInc, endDateInc)
+                                }
+                            }}
+                        />
+                    <button onClick={() => onSearch(searchQuery, currentStartDateInc, endDateInc)}>Search</button>
+                </div>
             </div>
             {visits &&
                 <VisitSearchResults visits={visits} onSelect={onSelect} />

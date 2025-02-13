@@ -16,12 +16,12 @@ export function DateRangeSelector({dateRange, setDateRange}: DateRangeSelectorPr
     return (
         <div className="date-range-selector">
             <div className="date from">
-                From: <DateSelector 
+                <span>From:</span><DateSelector 
                         date={startDateInc}
                         setDate={(dateSelection) => setDateRange({startDateInc: dateSelection, endDateInc: dateRange.endDateInc})} />
             </div>
             <div className="date to">
-                To: <DateSelector 
+            <span>To:</span><DateSelector 
                         date={endDateInc}
                         setDate={(dateSelection) => setDateRange({startDateInc: dateRange.startDateInc, endDateInc: dateSelection})} />
             </div>

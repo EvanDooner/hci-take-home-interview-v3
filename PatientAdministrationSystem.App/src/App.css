@@ -33,6 +33,35 @@
     width: 100%;
     margin-top: 1rem;
 
+    .date-range-selector {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        gap: 0.5rem;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-bottom: 2rem;
+
+        .date {
+            justify-content: space-evenly;
+            display: flex;
+            width: 45%;
+
+            select {
+                font-size: 1.6rem;
+            }
+        }
+    }
+
+    .visit.search-form {
+        display: block;
+    }
+
+    .visit.searchbar {
+        display: flex;
+        gap: 1rem;
+    }
+
     .search-form {
         font-size: 1.8rem;
         display: flex;
