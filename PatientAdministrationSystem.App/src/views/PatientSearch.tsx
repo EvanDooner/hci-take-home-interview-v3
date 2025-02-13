@@ -9,7 +9,18 @@ export default function PatientSearch({patients, onSearch, onSelect}: {patients:
     return (
         <div className="patient-search">
             <div className="patient-search-form">
-                <input placeholder="Enter patient name or email" type="text" name="searchQuery" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} />
+                <input 
+                        placeholder="Enter patient name or email" 
+                        type="text" 
+                        name="searchQuery" 
+                        value={searchQuery} 
+                        onChange={e => setSearchQuery(e.target.value)} 
+                        onKeyDown={e => {
+                            if (e.key === 'Enter') {
+                                onSearch(searchQuery)
+                            }
+                        }}
+                    />
                 <button onClick={() => onSearch(searchQuery)}>Search</button>
             </div>
             {patients &&
