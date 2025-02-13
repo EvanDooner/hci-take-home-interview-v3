@@ -45,7 +45,7 @@ function App() {
           setPreviousPage(undefined);
         }}/>
       case Page.VisitSearch:
-        return <VisitSearch visits={visits} onSearch={(searchQuery) => visitSearchService.findVisits(searchQuery, setVisits)} onSelect={onSelect} onTabSelect={setCurrentPage}/>
+        return <VisitSearch visits={visits} onSearch={(searchQuery, startDateInc, endDateInc) => visitSearchService.findVisits(searchQuery, startDateInc, endDateInc, setVisits)} onSelect={onSelect} onTabSelect={setCurrentPage}/>
       default:
         return <div>Default</div>
     }

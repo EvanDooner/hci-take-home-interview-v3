@@ -9,8 +9,8 @@ export default class VisitSearchService {
         this._apiClient = apiClient;
     }
 
-    findVisits(searchQuery: string, callback: (vists: PaginatedResults<RichVisit>) => void) {
-        this._apiClient.get<PaginatedResults<RichVisit>>(`api/visits?searchQuery=${searchQuery}`)
+    findVisits(searchQuery: string, startDateInc: Date, endDateInc: Date, callback: (vists: PaginatedResults<RichVisit>) => void) {
+        this._apiClient.get<PaginatedResults<RichVisit>>(`api/visits?searchQuery=${searchQuery}&startDateInc=${startDateInc.toISOString()}&endDateInc=${endDateInc.toISOString()}`)
             .then(res => {
                 callback(res.data);
             })
