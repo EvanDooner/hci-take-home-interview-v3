@@ -13,6 +13,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PatientAdministrationSystem
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientAdministrationSystem.Application", "PatientAdministrationSystem.Application\PatientAdministrationSystem.Application.csproj", "{F538F9AB-08A0-4D55-B71D-5A0FDD545B0B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PatientAdministrationSystem.Tests", "PatientAdministrationSystem.Tests", "{F5A6D06E-A19C-699B-EB4D-40F955C10B1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientAdministrationSystem.Tests", "PatientAdministrationSystem.Tests\PatientAdministrationSystem.Tests.csproj", "{55BD9E89-1FB8-44CD-A574-3FFF5B13B892}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,10 @@ Global
 		{F538F9AB-08A0-4D55-B71D-5A0FDD545B0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F538F9AB-08A0-4D55-B71D-5A0FDD545B0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F538F9AB-08A0-4D55-B71D-5A0FDD545B0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55BD9E89-1FB8-44CD-A574-3FFF5B13B892}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55BD9E89-1FB8-44CD-A574-3FFF5B13B892}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55BD9E89-1FB8-44CD-A574-3FFF5B13B892}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55BD9E89-1FB8-44CD-A574-3FFF5B13B892}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -38,6 +46,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{3225823F-02FF-44EA-87BF-39E99F8E237F} = {2D3C4964-948D-4A28-B019-1659E419755C}
 		{F538F9AB-08A0-4D55-B71D-5A0FDD545B0B} = {65A388FB-4A34-4BCE-A40A-887B418705AD}
+		{55BD9E89-1FB8-44CD-A574-3FFF5B13B892} = {F5A6D06E-A19C-699B-EB4D-40F955C10B1F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {82ADB241-AECC-4322-A2E0-70206B9AAE5C}
