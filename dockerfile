@@ -14,9 +14,6 @@ WORKDIR /app
 
 COPY PatientAdministrationSystem.Api .
 
-RUN mkdir /app/wwwroot
-COPY --from=npm_build /app/dist /app/wwwroot
-
 RUN dotnet restore
 RUN dotnet publish -c Release -o out
 
@@ -25,7 +22,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=dotnet_build /app/out .
 
-RUN mkdir /app/wwwroot
 COPY --from=npm_build /app/dist /app/wwwroot
 # Expose port 80 for the application
 EXPOSE 80
