@@ -16,7 +16,7 @@ function getDayOptions(month: number, year: number) {
     const options: JSX.Element[] = []
 
     for (let i = 1; i <= daysInMonth(month, year); i += 1) {
-        options.push(<option value={i}>{i}</option>)
+        options.push(<option key={i} value={i}>{i}</option>)
     }
 
     return options;
@@ -26,7 +26,7 @@ function getYearOptions(startYearInc: number, endYearInc: number) {
     const options: JSX.Element[] = []
 
     for (let i = endYearInc; i >= startYearInc; i -= 1) {
-        options.push(<option value={i}>{i}</option>)
+        options.push(<option key={i} value={i}>{i}</option>)
     }
 
     return options;
@@ -57,7 +57,7 @@ export function DateSelector({date, setDate}: DateSelectorProps) {
     const year = date.getFullYear();
 
     return (
-        <div className="date-selector">
+        <div className="date-selector" data-testid="DateSelector">
             <select
                     name="day"
                     value={day}
