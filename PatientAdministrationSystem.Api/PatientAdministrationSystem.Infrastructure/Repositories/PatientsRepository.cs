@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using PatientAdministrationSystem.Application.Entities;
 using PatientAdministrationSystem.Application.Repositories.Interfaces;
 using PatientAdministrationSystem.Application.Repositories.Pagination;
@@ -50,17 +51,14 @@ public class PatientsRepository : IPatientsRepository
 
     public PatientEntity? GetPatient(Guid id, bool loadVisits)
     {
-        var patient = _context.Patients.Find(id);
-
-        if (patient != null && loadVisits)
+        IQueryable<PatientEntity> patient = _context.Patients.Where(p => p.Id == id);
+        
+        if (loadVisits)
         {
-            _context.Entry(patient).Collection(p => p.PatientHospitals).Load();
-            foreach (PatientHospitalRelation phr in patient.PatientHospitals)
-            {
-                _context.Entry(phr).Reference(phr => phr.Visit).Load();
-            }
+            patient.Include(p => p.PatientHospitals)
+            .ThenInclude(ph => ph.Visit);
         }
 
-        return patient;
+        return patient.ToList().SingleOrDefault(null as PatientEntity);
     }
 }
