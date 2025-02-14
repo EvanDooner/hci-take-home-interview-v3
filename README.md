@@ -24,6 +24,19 @@ The Brief:
 
 ## Testing
 
+### Frontend Testing
+
+#### Pre-requisites
+
+* node 20+ installed locally
+
+#### Steps
+
+1. Clone this repo to your local machine
+2. In the terminal, navigate to the repo root directory (where this README lives)
+3. Navigate to `./PatientAdministrationSystem.App`
+4. Run `npm run test`
+
 ### Backend Integration Testing
 
 #### Pre-requisites
