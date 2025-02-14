@@ -30,8 +30,8 @@ public class PatientsRepository : IPatientsRepository
         var allResults = _context.Patients.Where(p =>
             p.PatientHospitals.Any(ph => ph.HospitalId == hospitalId) &&
             (
-                (p.FirstName + p.LastName).Replace(" ", "").Contains(searchQuery, StringComparison.CurrentCultureIgnoreCase) ||
-                p.Email.Replace(" ", "").Contains(searchQuery, StringComparison.CurrentCultureIgnoreCase)
+                (p.FirstName + p.LastName).Replace(" ", "").Contains(searchQuery.Replace(" ", ""), StringComparison.CurrentCultureIgnoreCase) ||
+                p.Email.Replace(" ", "").Contains(searchQuery.Replace(" ", ""), StringComparison.CurrentCultureIgnoreCase)
             )
         )
         .OrderBy(p => p.FirstName)

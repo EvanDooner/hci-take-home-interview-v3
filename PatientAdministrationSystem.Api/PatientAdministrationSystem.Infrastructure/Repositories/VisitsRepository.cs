@@ -34,8 +34,8 @@ public class VisitsRepository : IVisitsRepository
             v.Date.CompareTo(endDateInc) <= 0 &&
             v.PatientHospitals.Any(ph => ph.HospitalId == hospitalId &&
             (
-                (ph.Patient.FirstName + ph.Patient.LastName).Replace(" ", "").Contains(searchQuery, StringComparison.CurrentCultureIgnoreCase) ||
-                ph.Patient.Email.Replace(" ", "").Contains(searchQuery, StringComparison.CurrentCultureIgnoreCase)
+                (ph.Patient.FirstName + ph.Patient.LastName).Replace(" ", "").Contains(searchQuery.Replace(" ", ""), StringComparison.CurrentCultureIgnoreCase) ||
+                ph.Patient.Email.Replace(" ", "").Contains(searchQuery.Replace(" ", ""), StringComparison.CurrentCultureIgnoreCase)
             ))
         )
         .Include(v => v.PatientHospitals)

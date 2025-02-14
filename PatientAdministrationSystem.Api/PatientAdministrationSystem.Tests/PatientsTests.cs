@@ -18,6 +18,7 @@ public class PatientsTests
     [Theory]
     [InlineData("/api/patients")]
     [InlineData("/api/patients?searchQuery=j")]
+    [InlineData("/api/patients?searchQuery=John Sweeney")]
     [InlineData("/api/patients?searchQuery=JohnSwEEney")]
     [InlineData("/api/patients?searchQuery=sweeney@hci")]
     public async Task Get_ValidSearchsReturnExpectedData(string url)
